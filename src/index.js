@@ -1,9 +1,15 @@
 import { } from 'dotenv/config'
 import connectDB from "./db/index.js";
+import app from './app.js';
 
 
 connectDB()
-
+    .then(() => {
+        app.listen(process.env.PORT, () => console.log("server started at", process.env.PORT))
+    })
+    .catch((error) => {
+        console.log("Error occurred", error)
+    })
 
 //one type of approach
 /*
